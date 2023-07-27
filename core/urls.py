@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import home
+from .views import home, save
 
 urlpatterns = [
-    path('/teste',home)
+    path('', home), 
+    path('salvar/', save, name='save'), 
 ]
