@@ -1,31 +1,42 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
-    <h1>teste</h1>
+    <body>
+        <div class="container min-vh-100 d-flex justify-content-center align-items-center border border-info">
+                <div class="col-md-10 col-lg-5 mt-5 border border-info d-flex flex-column align-items-center">
+                    <h3 class="h3">Cadastro de Pessoas</h3>
 
-    <ul>
-        {%for person in person%}
-            <li>{{person.id}} - {{person.name}}
-                <a href='{% url 'edit' person.id %}'>Editar</a>
-                <a href='{% url 'delete' person.id %}'>Deletar</a>
-            </li>
-        {% endfor %}
-    </ul>
-
-    <form action = '{% url 'save' %}' method='POST'>
-        {% csrf_token %}
-        <input type='text' name='person_name'></input>
-        <button type ='submit'>Salvar</button>
-    </form>
-
-
-
-
-
-</body>
-</html>
+                    <table class="table mx-auto text-center">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Editar</th>
+                            <th scope="col">Deletar</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {%for person in person%}
+                        <tr>
+                            <td>{{person.name}}</td>
+                            <td><a href='{% url 'edit' person.id %}'><img src="{% static '/img/editar.png' %}" style='height:20px; width:20px'</a></td>
+                            <td><a href='{% url 'delete' person.id %}'><img src="{% static '/img/excluir.png' %}" style='height:20px; width:20px'</a></td>
+                            {% endfor %}
+                        </tr>
+                    <form action='{% url 'save' %}' method='POST'>
+                        {% csrf_token %}
+                        <input type='text' name='person_name'>
+                        <button type='submit'>Salvar</button>
+                    </form> 
+            </div>                
+        </div>
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    </body>
+    </html>
