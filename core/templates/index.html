@@ -8,35 +8,60 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
-    <body>
-        <div class="container min-vh-100 d-flex justify-content-center align-items-center border border-info">
-                <div class="col-md-10 col-lg-5 mt-5 border border-dark d-flex flex-column align-items-center shadow p-3 mb-5 bg-body-tertiary rounded">
-                    <h3 class="h3">Cadastro de Pessoas</h3>
+    <div class="container min-vh-100 d-flex justify-content-center align-items-center">
+        <div class="col-md-10 col-lg-5 mt-5 border border-dark d-flex flex-column align-items-center shadow bg-dark-subtle p-3 mb-5 bg-body-tertiary rounded">
+            <h3 class="h3">Cadastro de Pessoas</h3>
 
-                    <table class="table mx-auto text-center">
-                        <thead>
-                          <tr>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Editar</th>
-                            <th scope="col">Deletar</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            {%for person in person%}
+            <table class="table mx-auto text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Deletar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {%for person in person%}
                         <tr>
                             <td>{{person.name}}</td>
-                            <td><a href='{% url 'edit' person.id %}'><img src="{% static '/img/editar.png' %}" style='height:20px; width:20px'</a></td>
-                            <td><a href='{% url 'delete' person.id %}'><img src="{% static '/img/excluir.png' %}" style='height:20px; width:20px'</a></td>
-                            {% endfor %}
+                            <td><a href='{% url 'edit' person.id %}'><img src="{% static '/img/editar.png' %}" style='height:20px; width:20px'></a></td>
+                            <td><a href='{% url 'delete' person.id %}'><img src="{% static '/img/excluir.png' %}" style='height:20px; width:20px'></a></td>
                         </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="d-flex">
+                <button type="button" class="btn btn-primary mt-3 border border-dark" data-bs-toggle="modal" data-bs-target="#addPersonModal">
+                  + Adicionar Pessoa
+                </button>
+              </div>
+
+            <!-- Modal para adicionar pessoa -->
+            <div class="modal fade" id="addPersonModal" tabindex="-1" aria-labelledby="addPersonModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="addPersonModalLabel">Adicionar Pessoa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Formulário para adicionar pessoa -->
                     <form action='{% url 'save' %}' method='POST'>
-                        {% csrf_token %}
-                        <input type='text' name='person_name'>
-                        <button type='submit'>Salvar</button>
-                    </form> 
-            </div>                
+                      {% csrf_token %}
+                      <div class="form-group py-3">
+                        <label for="person_name">Nome:</label>
+                        <input type='text' class="form-control" name='person_name' required>
+                      </div>
+                      <button type='submit' class="btn btn-primary">Salvar</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
-    
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    </body>
-    </html>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
