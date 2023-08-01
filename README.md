@@ -13,6 +13,7 @@ This is a Django project that implements CRUD (Create, Read, Update and Delete) 
 The project makes use of the Bootstrap front-end framework, which offers a set of ready-to-use components and styles, making the user interface modern and responsive. In addition, the database used is SQLite, a lightweight and easy to configure database, which is suitable for smaller applications and rapid development projects.
 
 Through the available pages and forms, users can intuitively interact with the system and manage people's data efficiently.
+
 What is CRUD?
 
 CRUD is an abbreviation for the following operations:
