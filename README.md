@@ -8,7 +8,11 @@
 
 # Description
 
-This is a Django project that implements CRUD (Create, Read, Update and Delete) operations for an entity called "Person". CRUD is an acronym that stands for the four basic operations that can be performed in any database management system or application that involves data persistence.
+This is a Django project that implements CRUD (Create, Read, Update and Delete) operations for an entity called "Person". CRUD is a common approach to data management operations in information systems and web applications. In this project, CRUD is used to allow users to create, read, update and delete person records in the system.
+
+The project makes use of the Bootstrap front-end framework, which offers a set of ready-to-use components and styles, making the user interface modern and responsive. In addition, the database used is SQLite, a lightweight and easy to configure database, which is suitable for smaller applications and rapid development projects.
+
+Through the available pages and forms, users can intuitively interact with the system and manage people's data efficiently.
 What is CRUD?
 
 CRUD is an abbreviation for the following operations:
