@@ -46,7 +46,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                   </div>
                   <div class="modal-body">
-                    <!-- Formulário para adicionar pessoa -->
                     <form action='{% url 'save' %}' method='POST'>
                       {% csrf_token %}
                       <div class="form-group py-3">

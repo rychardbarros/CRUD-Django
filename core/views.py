@@ -26,3 +26,6 @@ def delete(request, id):
     person = Person.objects.get(id=id)
     person.delete()
     return redirect(home)
+
+def return_home(request):
+    return redirect(home)
